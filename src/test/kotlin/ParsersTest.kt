@@ -1,6 +1,6 @@
 import org.junit.Test
-import vocabularyextractor.vocabularyParser.compoundNouns.LexicalizedCompoundNounsParser
-import vocabularyextractor.vocabularyParser.phrasalVerbs.LexicalizedPhrasalVerbsParser
+import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedCompoundNounsParser
+import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedPhrasalVerbsParser
 
 class ParsersTest {
     @Test

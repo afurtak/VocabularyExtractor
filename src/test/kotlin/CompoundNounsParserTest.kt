@@ -1,6 +1,6 @@
 import junit.framework.Assert.assertEquals
 import org.junit.Test
-import vocabularyextractor.vocabularyParser.compoundNouns.LexicalizedCompoundNounsParser
+import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedCompoundNounsParser
 
 class CompoundNounsParserTest {
     @Test

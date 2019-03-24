@@ -1,7 +1,6 @@
 import org.junit.Test
-import vocabularyextractor.vocabularyParser.phrasalVerbs.LexicalizedPhrasalVerbsParser
-import vocabularyextractor.vocabularyParser.phrasalVerbs.NeuralNetworkPhrasalVerbParser
-
+import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedCompoundNounsParser
+import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedPhrasalVerbsParser
 
 class PhrasalVerbParserTest {
 
@@ -17,7 +16,7 @@ class PhrasalVerbParserTest {
         for (text in testText) {
             println("Text nr. ${number++}")
             val parsers = listOf(
-                NeuralNetworkPhrasalVerbParser(text),
+                LexicalizedCompoundNounsParser(text),
                 LexicalizedPhrasalVerbsParser(text)
             )
 
@@ -48,11 +47,6 @@ class PhrasalVerbParserTest {
         println("---- Lexicalized phrasal verb parser ----")
         for ((i, text) in testText.withIndex()) {
             val phrasalVerbs = LexicalizedPhrasalVerbsParser(text).parse()
-            println("actual: ${phrasalVerbs.size}, expected: ${quantity[i]}")
-        }
-        println("---- Neural network phrasal verb parser ----")
-        for ((i, text) in testText.withIndex()) {
-            val phrasalVerbs = NeuralNetworkPhrasalVerbParser(text).parse()
             println("actual: ${phrasalVerbs.size}, expected: ${quantity[i]}")
         }
     }

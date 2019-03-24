@@ -1,17 +1,16 @@
-package vocabularyextractor.vocabularyParser.compoundNouns
+package vocabularyextractor.vocabularyParser.lexicalizedParsers
 
 import edu.stanford.nlp.ling.HasWord
 import edu.stanford.nlp.trees.TypedDependency
 import edu.stanford.nlp.trees.UniversalEnglishGrammaticalRelations
-import vocabularyextractor.vocabularyParser.VocabularyParser
 import vocabularyextractor.vocabularyParser.VocabularyPart
 import vocabularyextractor.vocabularyParser.VocabularyType
 
-abstract class CompoundNounsParser(text: String): VocabularyParser(text) {
-    fun isCompound(dependency: TypedDependency) =
-        dependency.reln() == UniversalEnglishGrammaticalRelations.COMPOUND_MODIFIER
+class LexicalizedCompoundNounsParser(text: String): LexicalizedVocabularyParser(text) {
+    override fun isDependencyRightType(dependency: TypedDependency) =
+            dependency.reln() == UniversalEnglishGrammaticalRelations.COMPOUND_MODIFIER
 
-    fun parseCompoundNoun(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
+    override fun parseVocabularyType(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
         val first = getBaseForm(dependency.gov().word())
         val second = dependency.dep().word()
         return VocabularyPart(
