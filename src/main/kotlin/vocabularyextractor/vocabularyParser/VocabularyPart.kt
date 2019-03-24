@@ -15,6 +15,17 @@ data class VocabularyPart(val type: VocabularyType, val content: String, val con
         result = 31 * result + context.hashCode()
         return result
     }
+
+    override fun toString(): String =
+        StringBuilder().apply {
+            this.append(content)
+                .append(" is a ")
+                .append(type)
+                .append(", in sentence: ")
+                for (word in context)
+                    this.append(word.word())
+                        .append(" ")
+            }.toString()
 }
 
 enum class VocabularyType {
