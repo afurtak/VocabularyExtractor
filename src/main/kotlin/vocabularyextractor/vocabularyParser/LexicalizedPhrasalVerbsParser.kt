@@ -9,15 +9,14 @@ import vocabularyextractor.vocabularyParser.NLPModels.lexicalParser
 
 class LexicalizedPhrasalVerbsParser(text: String) : PhrasalVerbParser(text) {
 
-    override fun parsePhrasalVerbs(): Set<String> {
-        val grammaticalRelationsTrees = parseGrammaticalRelation(sentences)
+    override fun parse(): Set<VocabularyPart> {
         val factory = PennTreebankLanguagePack().grammaticalStructureFactory()
-        val phrasalVerbs = mutableSetOf<String>()
+        val phrasalVerbs = mutableSetOf<VocabularyPart>()
 
-        for (tree in grammaticalRelationsTrees)
-            for (dependency in typedDependencies(factory, tree))
+        for (sentence in sentences)
+            for (dependency in typedDependencies(factory, parseGrammaticalRelation(sentence)))
                 if (isPhrasal(dependency))
-                    phrasalVerbs.add(parsePhrasalVerb(dependency))
+                    phrasalVerbs.add(parsePhrasalVerb(dependency, sentence))
         return phrasalVerbs
     }
 
@@ -26,10 +25,6 @@ class LexicalizedPhrasalVerbsParser(text: String) : PhrasalVerbParser(text) {
             .newGrammaticalStructure(dependencyTree)
             .typedDependencies()
 
-    private fun parseGrammaticalRelation(sentences: List<MutableList<HasWord>>): List<Tree> {
-        val trees = mutableListOf<Tree>()
-        for (sentence in sentences)
-            trees.add(lexicalParser.apply(sentence))
-        return trees
-    }
+    private fun parseGrammaticalRelation(sentence: List<HasWord>) =
+        lexicalParser.apply(sentence)
 }

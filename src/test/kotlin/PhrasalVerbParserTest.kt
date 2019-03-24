@@ -22,7 +22,7 @@ class PhrasalVerbParserTest {
             )
 
             for (parser in parsers) {
-                val phrasalVerbs = parser.parsePhrasalVerbs()
+                val phrasalVerbs = parser.parse()
                 println("\t${phrasalVerbs.size}")
                 for (phrasal in phrasalVerbs)
                     println("\t\t $phrasal")
@@ -47,12 +47,12 @@ class PhrasalVerbParserTest {
         )
         println("---- Lexicalized phrasal verb parser ----")
         for ((i, text) in testText.withIndex()) {
-            val phrasalVerbs = LexicalizedPhrasalVerbsParser(text).parsePhrasalVerbs()
+            val phrasalVerbs = LexicalizedPhrasalVerbsParser(text).parse()
             println("actual: ${phrasalVerbs.size}, expected: ${quantity[i]}")
         }
-        println("---- Lexicalized phrasal verb parser ----")
+        println("---- Neural network phrasal verb parser ----")
         for ((i, text) in testText.withIndex()) {
-            val phrasalVerbs = NeuralNetworkPhrasalVerbParser(text).parsePhrasalVerbs()
+            val phrasalVerbs = NeuralNetworkPhrasalVerbParser(text).parse()
             println("actual: ${phrasalVerbs.size}, expected: ${quantity[i]}")
         }
     }

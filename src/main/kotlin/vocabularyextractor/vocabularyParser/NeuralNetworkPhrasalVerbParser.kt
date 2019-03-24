@@ -6,12 +6,12 @@ import vocabularyextractor.vocabularyParser.NLPModels.posTagger
 
 class NeuralNetworkPhrasalVerbParser(text: String) : PhrasalVerbParser(text) {
 
-    override fun parsePhrasalVerbs(): Set<String> {
-        val phrasalVerbs = mutableSetOf<String>()
+    override fun parse(): Set<VocabularyPart> {
+        val phrasalVerbs = mutableSetOf<VocabularyPart>()
         for (sentence in sentences)
             for (dependency in typedDependencies(sentence))
                 if (isPhrasal(dependency))
-                    phrasalVerbs.add(parsePhrasalVerb(dependency))
+                    phrasalVerbs.add(parsePhrasalVerb(dependency, sentence))
         return phrasalVerbs
     }
 

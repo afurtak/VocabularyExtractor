@@ -11,19 +11,17 @@ import java.io.StringReader
 abstract class PhrasalVerbParser(text: String) {
     protected val sentences: MutableList<MutableList<HasWord>> = MaxentTagger.tokenizeText(StringReader(text))
 
-    abstract fun parsePhrasalVerbs(): Set<String>
+    abstract fun parse(): Set<VocabularyPart>
 
-    fun isPhrasal(dependency: TypedDependency): Boolean {
-        return dependency.reln() == UniversalEnglishGrammaticalRelations.PHRASAL_VERB_PARTICLE
-    }
+    fun isPhrasal(dependency: TypedDependency) =
+        dependency.reln() == UniversalEnglishGrammaticalRelations.PHRASAL_VERB_PARTICLE
 
-    fun parsePhrasalVerb(dependency: TypedDependency): String {
+    fun parsePhrasalVerb(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
         val first =getBaseForm(dependency.gov().word())
         val second = dependency.dep().word()
-        return "$first $second"
+        return VocabularyPart(VocabularyType.PHRASAL_VERB, "$first $second", context)
     }
 
-    fun getBaseForm(word: String): String {
-        return Morphology().stem(word)
-    }
+    fun getBaseForm(word: String): String =
+        Morphology().stem(word)
 }
