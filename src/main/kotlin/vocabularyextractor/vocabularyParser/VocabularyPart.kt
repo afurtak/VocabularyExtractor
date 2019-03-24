@@ -19,8 +19,9 @@ data class VocabularyPart(val type: VocabularyType, val content: String, val con
 
 enum class VocabularyType {
     PHRASAL_VERB {
-        override fun toString(): String {
-            return "phrasal verb"
-        }
+        override fun toString() = "phrasal verb"
     },
+    COMPOUND_NOUN {
+        override fun toString() = "compound noun"
+    }
 }

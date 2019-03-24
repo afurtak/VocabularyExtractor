@@ -1,6 +1,6 @@
 import org.junit.Test
-import vocabularyextractor.vocabularyParser.LexicalizedPhrasalVerbsParser
-import vocabularyextractor.vocabularyParser.NeuralNetworkPhrasalVerbParser
+import vocabularyextractor.vocabularyParser.phrasalVerbs.LexicalizedPhrasalVerbsParser
+import vocabularyextractor.vocabularyParser.phrasalVerbs.NeuralNetworkPhrasalVerbParser
 
 
 class PhrasalVerbParserTest {

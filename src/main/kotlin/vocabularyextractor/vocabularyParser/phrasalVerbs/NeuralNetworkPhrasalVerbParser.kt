@@ -1,8 +1,9 @@
-package vocabularyextractor.vocabularyParser
+package vocabularyextractor.vocabularyParser.phrasalVerbs
 
 import edu.stanford.nlp.ling.HasWord
 import vocabularyextractor.vocabularyParser.NLPModels.dependencyParser
 import vocabularyextractor.vocabularyParser.NLPModels.posTagger
+import vocabularyextractor.vocabularyParser.VocabularyPart
 
 class NeuralNetworkPhrasalVerbParser(text: String) : PhrasalVerbParser(text) {
 

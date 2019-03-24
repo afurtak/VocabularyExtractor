@@ -1,10 +1,11 @@
-package vocabularyextractor.vocabularyParser
+package vocabularyextractor.vocabularyParser.phrasalVerbs
 
 import edu.stanford.nlp.ling.HasWord
 import edu.stanford.nlp.trees.GrammaticalStructureFactory
 import edu.stanford.nlp.trees.PennTreebankLanguagePack
 import edu.stanford.nlp.trees.Tree
 import vocabularyextractor.vocabularyParser.NLPModels.lexicalParser
+import vocabularyextractor.vocabularyParser.VocabularyPart
 
 
 class LexicalizedPhrasalVerbsParser(text: String) : PhrasalVerbParser(text) {
