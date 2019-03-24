@@ -1,4 +1,4 @@
-package vocabularyextractor
+package vocabularyextractor.vocabularyParser
 
 val tagMeaning = mutableMapOf(
     Pair("CC", "Coordinating conjunction"),

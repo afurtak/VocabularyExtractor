@@ -1,4 +1,4 @@
-package vocabularyextractor
+package vocabularyextractor.vocabularyParser
 
 import edu.stanford.nlp.ling.HasWord
 import edu.stanford.nlp.process.Morphology

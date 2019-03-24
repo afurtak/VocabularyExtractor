@@ -1,4 +1,4 @@
-package vocabularyextractor
+package vocabularyextractor.vocabularyParser
 
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser
 import edu.stanford.nlp.parser.nndep.DependencyParser
