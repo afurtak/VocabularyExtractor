@@ -9,10 +9,15 @@ import vocabularyextractor.vocabularyParser.NLPModels.lexicalParser
 import vocabularyextractor.vocabularyParser.VocabularyParser
 import vocabularyextractor.vocabularyParser.VocabularyPart
 
-abstract class LexicalizedVocabularyParser(text: String): VocabularyParser(text) {
+class LexicalizedVocabularyParser(text: String): VocabularyParser(text) {
     protected val grammaticalStructureFactory: GrammaticalStructureFactory by lazy {
         PennTreebankLanguagePack().grammaticalStructureFactory()
     }
+
+    val adapters = listOf(
+        PhrasalVerbsAdapter(),
+        CompoundNounsAdapter()
+    )
 
     protected fun typedDependencies(dependencyTree: Tree): MutableCollection<TypedDependency> =
             grammaticalStructureFactory
@@ -22,15 +27,12 @@ abstract class LexicalizedVocabularyParser(text: String): VocabularyParser(text)
     protected fun parseGrammaticalRelation(sentence: List<HasWord>): Tree =
             lexicalParser.apply(sentence)
 
-    protected abstract fun parseVocabularyType(dependency: TypedDependency, context: List<HasWord>): VocabularyPart
-
-    protected abstract fun isDependencyRightType(dependency: TypedDependency): Boolean
-
     override fun parse(): Set<VocabularyPart> =
         mutableSetOf<VocabularyPart>().apply {
             for (sentence in sentences)
                 for (dependency in typedDependencies(parseGrammaticalRelation(sentence)))
-                    if (isDependencyRightType(dependency))
-                        this.add(parseVocabularyType(dependency, sentence))
+                    adapters
+                        .filter { it.isDependencyRightType(dependency) }
+                        .forEach { this.add(it.parseVocabularyType(dependency, sentence)) }
         }
 }

@@ -12,7 +12,6 @@ data class VocabularyPart(val type: VocabularyType, val content: String, val con
     override fun hashCode(): Int {
         var result = type.hashCode()
         result = 31 * result + content.hashCode()
-        result = 31 * result + context.hashCode()
         return result
     }
 
@@ -26,6 +25,9 @@ data class VocabularyPart(val type: VocabularyType, val content: String, val con
                     this.append(word.word())
                         .append(" ")
             }.toString()
+
+    fun getContext(): String =
+        context.joinToString(" ") { it.word() }
 }
 
 enum class VocabularyType {

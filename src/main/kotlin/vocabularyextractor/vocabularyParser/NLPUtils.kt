@@ -1,5 +1,7 @@
 package vocabularyextractor.vocabularyParser
 
+import edu.stanford.nlp.process.Morphology
+
 val tagMeaning = mutableMapOf(
     Pair("CC", "Coordinating conjunction"),
     Pair("CD", "Cardinal number"),
@@ -45,3 +47,6 @@ fun getTagMeaning(tag: String): String? {
     else
         tagMeaning[tag]
 }
+
+fun getBaseForm(word: String): String =
+    Morphology().stem(word)

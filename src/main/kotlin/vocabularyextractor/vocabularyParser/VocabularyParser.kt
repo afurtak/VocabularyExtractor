@@ -8,7 +8,4 @@ import java.io.StringReader
 abstract class VocabularyParser(text: String) {
     protected val sentences: MutableList<MutableList<HasWord>> = MaxentTagger.tokenizeText(StringReader(text))
     abstract fun parse(): Set<VocabularyPart>
-
-    fun getBaseForm(word: String): String =
-        Morphology().stem(word)
 }
