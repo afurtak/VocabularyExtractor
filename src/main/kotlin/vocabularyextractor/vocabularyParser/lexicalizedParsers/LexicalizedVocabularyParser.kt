@@ -8,7 +8,6 @@ import edu.stanford.nlp.trees.TypedDependency
 import vocabularyextractor.vocabularyParser.NLPModels.lexicalParser
 import vocabularyextractor.vocabularyParser.VocabularyParser
 import vocabularyextractor.vocabularyParser.VocabularyPart
-import vocabularyextractor.vocabularyParser.VocabularyType
 
 abstract class LexicalizedVocabularyParser(text: String): VocabularyParser(text) {
     protected val grammaticalStructureFactory: GrammaticalStructureFactory by lazy {
