@@ -29,4 +29,8 @@ object PhrasalVerbsDictionary {
         val parts = line.split("-")
         return parts[0].trim() to parts[1].trim()
     }
+
+    fun String.isProperPhrasalVerb(): Boolean {
+        return phrasalVerbs.containsKey(this)
+    }
 }
