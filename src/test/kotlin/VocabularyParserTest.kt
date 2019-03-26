@@ -1,13 +1,25 @@
 import org.junit.Test
+import vocabularyextractor.dictionary.PhrasalVerbsDictionary
+import vocabularyextractor.dictionary.PhrasalVerbsDictionary.phrasalVerbs
+import vocabularyextractor.vocabularyParser.VocabularyType
 import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedVocabularyParser
 
 class VocabularyParserTest {
     @Test
     fun test() {
-        val parser = LexicalizedVocabularyParser(friendsTranscipt)
-        parser.parse().forEach {
+        val vocabulary = LexicalizedVocabularyParser(friendsTranscipt).parse()
+        vocabulary.forEach {
             println("${it.content}   ${it.getContext()}")
         }
+
+        vocabulary
+            .filter { it.type == VocabularyType.PHRASAL_VERB }
+            .forEach {
+                println(it.getContext())
+                println("${it.content}   -   ${phrasalVerbs[it.content]}")
+                println()
+            }
+        println(vocabulary.size)
     }
 }
 

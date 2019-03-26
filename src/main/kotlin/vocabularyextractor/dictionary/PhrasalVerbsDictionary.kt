@@ -1,5 +1,6 @@
 package vocabularyextractor.dictionary
 
+import vocabularyextractor.dictionary.PhrasalVerbsDictionary.phrasalVerbs
 import java.util.*
 
 object PhrasalVerbsDictionary {
@@ -29,8 +30,8 @@ object PhrasalVerbsDictionary {
         val parts = line.split("-")
         return parts[0].trim() to parts[1].trim()
     }
+}
 
-    fun String.isProperPhrasalVerb(): Boolean {
-        return phrasalVerbs.containsKey(this)
-    }
+fun String.isProperPhrasalVerb(): Boolean {
+    return phrasalVerbs.containsKey(this)
 }

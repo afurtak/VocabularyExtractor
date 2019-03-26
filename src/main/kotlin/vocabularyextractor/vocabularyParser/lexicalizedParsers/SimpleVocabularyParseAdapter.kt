@@ -2,6 +2,7 @@ package vocabularyextractor.vocabularyParser.lexicalizedParsers
 
 import edu.stanford.nlp.ling.HasWord
 import edu.stanford.nlp.ling.TaggedWord
+import vocabularyextractor.dictionary.isProperWord
 import vocabularyextractor.vocabularyParser.VocabularyPart
 
 open class SimpleVocabularyParseAdapter(
@@ -13,4 +14,7 @@ open class SimpleVocabularyParseAdapter(
 
     open fun parseVocabularyPart(taggedWord: TaggedWord, context: List<HasWord>) =
             vocabularyPartCreator(taggedWord, context)
+
+    open fun isProperWord(word: VocabularyPart) =
+            word.content.isProperWord()
 }

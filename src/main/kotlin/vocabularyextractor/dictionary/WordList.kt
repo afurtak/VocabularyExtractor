@@ -1,5 +1,6 @@
 package vocabularyextractor.dictionary
 
+import vocabularyextractor.dictionary.WordList.words
 import java.util.*
 
 object WordList {
@@ -8,7 +9,7 @@ object WordList {
                 readWords()
             }
 
-    private val wordListDataBase = "/dictionary/english words.txt"
+    private const val wordListDataBase = "/dictionary/english words.txt"
 
     private fun readWords(): Set<String> {
         val set = mutableSetOf<String>()
@@ -21,6 +22,8 @@ object WordList {
         }
     }
 
-    fun String.isProperWord() =
-        words.contains(this)
+
 }
+
+fun String.isProperWord() =
+    words.contains(this)

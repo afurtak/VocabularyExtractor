@@ -7,4 +7,5 @@ import vocabularyextractor.vocabularyParser.VocabularyPart
 interface ComplexVocabularyParseAdapter {
     fun parseVocabularyPart(dependency: TypedDependency, context: List<HasWord>): VocabularyPart
     fun isDependencyRightType(dependency: TypedDependency): Boolean
+    fun isProper(expression: VocabularyPart): Boolean
 }
