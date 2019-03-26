@@ -313,4 +313,4 @@ val friendsTranscipt = "There's nothing to tell.  He's just some guy I work with
         "Kids, new dream.  I'm in Las Vegas.  \n" +
         " Ahh, miss.    More coffee. \n" +
         "Ugh.   Excuse me, could you give this to that guy over there.   Go ahead.   Thank you.   Sorry.   Okay, Las Vegas. \n" +
-        "Okay, so, I'm in Las Vegas.  I'm Liza Minelli-\n"
+        "Okay, so, I'm in Las Vegas.  I'm Liza Minelli-\n".removeSuffix("\n")

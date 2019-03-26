@@ -7,9 +7,9 @@ import vocabularyextractor.vocabularyParser.VocabularyPart
 import vocabularyextractor.vocabularyParser.VocabularyType
 import vocabularyextractor.vocabularyParser.getBaseForm
 
-class PhrasalVerbsAdapter: LexicalizedVocabularyParserAdapter {
-    override fun parseVocabularyType(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
-        val first = getBaseForm(dependency.gov().word())
+class PhrasalVerbsAdapter: ComplexVocabularyParseAdapter {
+    override fun parseVocabularyPart(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
+        val first = dependency.gov().word().getBaseForm()
         val second = dependency.dep().word()
         return VocabularyPart(
             VocabularyType.PHRASAL_VERB,

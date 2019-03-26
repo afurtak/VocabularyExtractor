@@ -1,5 +1,6 @@
 package vocabularyextractor.vocabularyParser
 
+import edu.stanford.nlp.ling.TaggedWord
 import edu.stanford.nlp.process.Morphology
 
 val tagMeaning = mutableMapOf(
@@ -41,6 +42,15 @@ val tagMeaning = mutableMapOf(
     Pair("WRB", "Wh­adverb")
 )
 
+fun TaggedWord.isNoun(): Boolean =
+        tag().startsWith("NN")
+
+fun TaggedWord.isVerb(): Boolean =
+        tag().startsWith("VB")
+
+fun TaggedWord.isAdjective(): Boolean =
+        tag().startsWith("JJ")
+
 fun getTagMeaning(tag: String): String? {
     return if (!tagMeaning.containsKey(tag))
         null
@@ -48,5 +58,5 @@ fun getTagMeaning(tag: String): String? {
         tagMeaning[tag]
 }
 
-fun getBaseForm(word: String): String =
-    Morphology().stem(word)
+fun String.getBaseForm(): String =
+    Morphology().stem(this)

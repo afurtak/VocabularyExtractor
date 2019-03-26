@@ -7,12 +7,12 @@ import vocabularyextractor.vocabularyParser.VocabularyPart
 import vocabularyextractor.vocabularyParser.VocabularyType
 import vocabularyextractor.vocabularyParser.getBaseForm
 
-class CompoundNounsAdapter: LexicalizedVocabularyParserAdapter {
+class CompoundNounsAdapter: ComplexVocabularyParseAdapter {
     override fun isDependencyRightType(dependency: TypedDependency) =
             dependency.reln() == UniversalEnglishGrammaticalRelations.COMPOUND_MODIFIER
 
-    override fun parseVocabularyType(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
-        val first = getBaseForm(dependency.gov().word())
+    override fun parseVocabularyPart(dependency: TypedDependency, context: List<HasWord>): VocabularyPart {
+        val first = dependency.gov().word().getBaseForm()
         val second = dependency.dep().word()
         return VocabularyPart(
             VocabularyType.COMPOUND_NOUN,
