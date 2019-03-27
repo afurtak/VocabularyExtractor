@@ -1,4 +1,4 @@
-package vocabularyextractor.vocabularyParser
+package vocabularyextractor.reader
 
 import java.io.File
 import java.util.*

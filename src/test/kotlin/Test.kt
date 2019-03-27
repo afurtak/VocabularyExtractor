@@ -3,10 +3,11 @@ import edu.stanford.nlp.trees.PennTreebankLanguagePack
 import edu.stanford.nlp.trees.UniversalEnglishGrammaticalRelations
 import edu.stanford.nlp.trees.UniversalEnglishGrammaticalRelations.COMPOUND_MODIFIER
 import junit.framework.TestCase.assertEquals
+import net.sf.extjwnl.data.POS
+import net.sf.extjwnl.dictionary.Dictionary
 import org.junit.Test
 import vocabularyextractor.vocabularyParser.NLPModels
-import vocabularyextractor.vocabularyParser.SRTReader
-import java.io.File
+import vocabularyextractor.reader.SRTReader
 import java.io.StringReader
 
 class TestDependencies {
@@ -14,6 +15,17 @@ class TestDependencies {
     @Test
     fun testAssert() {
         assertEquals(42, Integer.sum(19, 23))
+    }
+
+    @Test
+    fun wordNetDictionaryTest() {
+        val dictionary = Dictionary.getDefaultResourceInstance()
+        dictionary.lookupAllIndexWords("gloss").indexWordArray.forEach { indexWord ->
+            indexWord.senses.forEach {
+                println(it.gloss)
+            }
+        }
+//        dictionary.getIndexWord(POS.NOUN, "gloss").senses.forEach { println(it.gloss) }
     }
 
     @Test

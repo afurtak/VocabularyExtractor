@@ -1,7 +1,6 @@
 import org.junit.Test
-import vocabularyextractor.dictionary.PhrasalVerbsDictionary
 import vocabularyextractor.dictionary.PhrasalVerbsDictionary.phrasalVerbs
-import vocabularyextractor.vocabularyParser.SRTReader
+import vocabularyextractor.reader.SRTReader
 import vocabularyextractor.vocabularyParser.VocabularyType
 import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedVocabularyParser
 

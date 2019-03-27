@@ -20,6 +20,20 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'edu.stanford.nlp:stanford-corenlp:3.9.2'
+    compile 'commons-cli:commons-cli:1.4'
+    compile 'net.sf.extjwnl:extjwnl:1.8.0'
+    compile 'net.sf.extjwnl:extjwnl-data-wn31:1.2'
+    
+//    <dependency>
+//            <groupId>net.sf.extjwnl</groupId>
+//    <artifactId>extjwnl</artifactId>
+//            <version>1.8.0</version>
+//</dependency>
+//            <dependency>
+//            <groupId>net.sf.extjwnl</groupId>
+//    <artifactId>extjwnl-data-wn31</artifactId>
+//    <version>1.2</version>
+//</dependency>
 }
 
 compileKotlin {
