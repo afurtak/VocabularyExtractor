@@ -5,6 +5,8 @@ import edu.stanford.nlp.trees.UniversalEnglishGrammaticalRelations.COMPOUND_MODI
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import vocabularyextractor.vocabularyParser.NLPModels
+import vocabularyextractor.vocabularyParser.SRTReader
+import java.io.File
 import java.io.StringReader
 
 class TestDependencies {
@@ -25,6 +27,11 @@ class TestDependencies {
             val tagged = tagger.tagSentence(sentence)
             println(tagged)
         }
+    }
+
+    @Test
+    fun srtTest() {
+        println(SRTReader("/home/afurtak/Desktop/0101.srt").parse())
     }
 
     @Test

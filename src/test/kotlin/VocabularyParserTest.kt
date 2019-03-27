@@ -1,6 +1,7 @@
 import org.junit.Test
 import vocabularyextractor.dictionary.PhrasalVerbsDictionary
 import vocabularyextractor.dictionary.PhrasalVerbsDictionary.phrasalVerbs
+import vocabularyextractor.vocabularyParser.SRTReader
 import vocabularyextractor.vocabularyParser.VocabularyType
 import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedVocabularyParser
 
@@ -20,6 +21,17 @@ class VocabularyParserTest {
                 println()
             }
         println(vocabulary.size)
+    }
+
+    @Test
+    fun test2() {
+        val text = SRTReader("/home/afurtak/Desktop/0101.srt").parse()
+        val vocabulary = LexicalizedVocabularyParser(text).parse()
+        for (v in vocabulary) {
+            println(v.content)
+            println(v.getContext())
+            println()
+        }
     }
 }
 
