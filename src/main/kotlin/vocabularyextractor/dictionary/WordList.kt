@@ -21,8 +21,6 @@ object WordList {
             Scanner(inputStream).forEach { set.add(it) }
         }
     }
-
-
 }
 
 fun String.isProperWord() =

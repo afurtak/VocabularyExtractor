@@ -5,7 +5,7 @@ import edu.stanford.nlp.trees.TypedDependency
 import edu.stanford.nlp.trees.UniversalEnglishGrammaticalRelations
 import vocabularyextractor.dictionary.isProperPhrasalVerb
 import vocabularyextractor.vocabularyParser.VocabularyPart
-import vocabularyextractor.vocabularyParser.VocabularyType
+import vocabularyextractor.vocabularyParser.PartOfSpeechTag
 import vocabularyextractor.vocabularyParser.getBaseForm
 
 class PhrasalVerbsAdapter: ComplexVocabularyParseAdapter {
@@ -16,7 +16,7 @@ class PhrasalVerbsAdapter: ComplexVocabularyParseAdapter {
         val first = dependency.gov().word().getBaseForm()
         val second = dependency.dep().word()
         return VocabularyPart(
-            VocabularyType.PHRASAL_VERB,
+            PartOfSpeechTag.PHRASAL_VERB,
             "$first $second".toLowerCase(),
             context
         )

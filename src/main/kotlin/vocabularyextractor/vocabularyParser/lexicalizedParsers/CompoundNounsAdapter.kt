@@ -5,7 +5,7 @@ import edu.stanford.nlp.trees.TypedDependency
 import edu.stanford.nlp.trees.UniversalEnglishGrammaticalRelations
 import vocabularyextractor.dictionary.isProperWord
 import vocabularyextractor.vocabularyParser.VocabularyPart
-import vocabularyextractor.vocabularyParser.VocabularyType
+import vocabularyextractor.vocabularyParser.PartOfSpeechTag
 import vocabularyextractor.vocabularyParser.getBaseForm
 
 class CompoundNounsAdapter: ComplexVocabularyParseAdapter {
@@ -23,7 +23,7 @@ class CompoundNounsAdapter: ComplexVocabularyParseAdapter {
         val first = dependency.gov().word().getBaseForm()
         val second = dependency.dep().word()
         return VocabularyPart(
-            VocabularyType.COMPOUND_NOUN,
+            PartOfSpeechTag.COMPOUND_NOUN,
             "$second $first".toLowerCase(),
             context
         )

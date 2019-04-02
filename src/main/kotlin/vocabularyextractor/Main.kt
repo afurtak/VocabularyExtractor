@@ -4,6 +4,7 @@ import net.sf.extjwnl.dictionary.Dictionary
 import org.apache.commons.cli.CommandLine
 import org.apache.commons.cli.DefaultParser
 import org.apache.commons.cli.Options
+import vocabularyextractor.dictionary.Definitions
 import vocabularyextractor.reader.SRTReader
 import vocabularyextractor.vocabularyParser.VocabularyPart
 import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedVocabularyParser
@@ -32,6 +33,7 @@ private fun printVocabulary(vocabulary: Set<VocabularyPart>) {
     vocabulary.forEach { part ->
         println(part.content)
         println(part.getContext())
+        println(Definitions.getDefinition(part))
         println()
     }
 }

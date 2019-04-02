@@ -1,11 +1,11 @@
 package vocabularyextractor.vocabularyParser.lexicalizedParsers
 
 import vocabularyextractor.vocabularyParser.VocabularyPart
-import vocabularyextractor.vocabularyParser.VocabularyType
+import vocabularyextractor.vocabularyParser.PartOfSpeechTag
 import vocabularyextractor.vocabularyParser.isAdjective
 
 class AdjectiveAdapter : SimpleVocabularyParseAdapter({
     it.isAdjective()
 }, { taggedWord, context ->
-    VocabularyPart(VocabularyType.ADJECTIVE, taggedWord, context)
+    VocabularyPart(PartOfSpeechTag.ADJECTIVE, taggedWord, context)
 })

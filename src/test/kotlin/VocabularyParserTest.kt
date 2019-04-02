@@ -1,7 +1,7 @@
 import org.junit.Test
 import vocabularyextractor.dictionary.PhrasalVerbsDictionary.phrasalVerbs
 import vocabularyextractor.reader.SRTReader
-import vocabularyextractor.vocabularyParser.VocabularyType
+import vocabularyextractor.vocabularyParser.PartOfSpeechTag
 import vocabularyextractor.vocabularyParser.lexicalizedParsers.LexicalizedVocabularyParser
 
 class VocabularyParserTest {
@@ -13,7 +13,7 @@ class VocabularyParserTest {
         }
 
         vocabulary
-            .filter { it.type == VocabularyType.PHRASAL_VERB }
+            .filter { it.type == PartOfSpeechTag.PHRASAL_VERB }
             .forEach {
                 println(it.getContext())
                 println("${it.content}   -   ${phrasalVerbs[it.content]}")
